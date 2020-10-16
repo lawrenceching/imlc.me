@@ -2,9 +2,9 @@ const lessToJson = require('less-to-json');
 
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Ant Design Starter",
-    description: `Kick off your next, great Gatsby project with this extra awesome ant design starter!`,
-    author: `@gatsbyjs + @alienCY`,
+    title: "IMLC.ME",
+    description: `IMLC.ME`,
+    author: `IMLC.ME`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -28,6 +28,14 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/src/post`,
       },
     },
     `gatsby-transformer-sharp`,

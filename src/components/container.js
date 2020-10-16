@@ -39,12 +39,12 @@ const Container = ({ defKey, children }) => {
             mode="horizontal"
             defaultSelectedKeys={defKey}
           >
-            <Menu.Item key="1">
-              <Link to="/page-2/">Page 2</Link>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Link to="/404/">Secret page</Link>
-            </Menu.Item>
+            {/*<Menu.Item key="1">*/}
+            {/*  <Link to="/page-2/">Page 2</Link>*/}
+            {/*</Menu.Item>*/}
+            {/*<Menu.Item key="2">*/}
+            {/*  <Link to="/404/">Secret page</Link>*/}
+            {/*</Menu.Item>*/}
           </Menu>
         </div>
       </Header>
@@ -59,7 +59,8 @@ const Container = ({ defKey, children }) => {
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>{children}</div>
       </Content>
       <Footer style={{ textAlign: "center" }}>
-        © {new Date().getFullYear()} made by alienCY ^__^
+        <p>Powered by <a target="_blank" href={"https://www.gatsbyjs.com/"}>Gatsby</a> and <a target="_blank" href={"gatsby-antd-starter"}>gatsby-antd-starter</a></p>
+        <p><a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备15018861号</a></p>
       </Footer>
     </Layout>
   )

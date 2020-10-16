@@ -1,19 +1,49 @@
 import React from "react"
 import Container from "../components/container"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import { Link, graphql } from "gatsby"
+import { Divider } from 'antd';
 
-const IndexPage = () => (
-  <Container>
+const IndexPage = ({data}) => {
+  console.log(data)
+  return <Container>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site with ant design! (antd)</p>
-    <p>You can find all Ant Design components <a href="https://ant.design/components/button/">here</a></p>
-    <p>Scroll down if you haven't already!</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
+
+    {data.allMarkdownRemark.nodes.map(( node ) => (
+        <div key={node.id}>
+          <h3>
+            <Link to={node.fields.slug}>
+              {node.frontmatter.title || node.headings[0].value || ''}
+            </Link>
+          </h3>
+          <p>{node.frontmatter.description || node.excerpt}</p>
+          <Divider/>
+        </div>
+    ))}
+
   </Container>
-)
+}
 
 export default IndexPage
+
+export const query = graphql`
+query MyQuery {
+  allMarkdownRemark {
+    nodes {
+      id
+      frontmatter {
+        description
+        title
+      }
+      fileAbsolutePath
+      headings(depth: h1) {
+        value
+      }
+      fields {
+        slug
+      }
+      excerpt(format: PLAIN, pruneLength: 100)
+    }
+  }
+}
+`
