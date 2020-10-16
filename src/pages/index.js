@@ -3,6 +3,7 @@ import Container from "../components/container"
 import SEO from "../components/seo"
 import { Link, graphql } from "gatsby"
 import { Divider } from 'antd';
+import _ from 'lodash';
 
 const IndexPage = ({data}) => {
   console.log(data)
@@ -13,7 +14,7 @@ const IndexPage = ({data}) => {
         <div key={node.id}>
           <h3>
             <Link to={node.fields.slug}>
-              {node.frontmatter.title || node.headings[0].value || ''}
+              {node.frontmatter.title || _.get(node, 'headings[0].value', null) || ''}
             </Link>
           </h3>
           <p>{node.frontmatter.description || node.excerpt}</p>
