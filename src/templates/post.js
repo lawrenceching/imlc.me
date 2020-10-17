@@ -4,6 +4,7 @@ import {Typography, Menu, Layout} from 'antd';
 import { CodeOutlined, MenuOutlined } from '@ant-design/icons';
 import {Helmet} from "react-helmet"
 import rehypeReact from "rehype-react"
+import Code from '../components/code'
 
 import 'antd/dist/antd.css';
 import _ from "lodash";
@@ -16,7 +17,8 @@ const {Footer, Sider, Content} = Layout;
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
-    h1: Title
+    h1: Title,
+    code: Code,
   },
 }).Compiler
 
