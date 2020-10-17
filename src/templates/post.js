@@ -1,6 +1,6 @@
 import React from "react"
 import {graphql} from "gatsby"
-import {Typography, Menu, Layout} from 'antd';
+import {Typography, Menu, Layout, Image} from 'antd';
 import { CodeOutlined, MenuOutlined } from '@ant-design/icons';
 import {Helmet} from "react-helmet"
 import rehypeReact from "rehype-react"
@@ -14,11 +14,19 @@ const {Title} = Typography;
 const {SubMenu} = Menu;
 const {Footer, Sider, Content} = Layout;
 
+function AntdImage ({src}) {
+  return (<Image
+      width={'80%'}
+      src={src}
+  />);
+}
+
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
     h1: Title,
     code: Code,
+    img: AntdImage
   },
 }).Compiler
 
