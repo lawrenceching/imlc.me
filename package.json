@@ -24,7 +24,8 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
-    "react-typography": "^0.16.19"
+    "react-typography": "^0.16.19",
+    "rehype-react": "^6.1.0"
   },
   "devDependencies": {
     "prettier": "^2.0.5"

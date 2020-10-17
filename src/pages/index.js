@@ -5,6 +5,8 @@ import { Link, graphql } from "gatsby"
 import { Divider } from 'antd';
 import _ from 'lodash';
 
+import 'antd/dist/antd.css';
+
 const IndexPage = ({data}) => {
   return <Container>
     <SEO title="Home" />
@@ -13,7 +15,7 @@ const IndexPage = ({data}) => {
         <div key={node.id}>
           <h3>
             <Link to={node.fields.slug}>
-              {node.frontmatter.title || _.get(node, 'headings[0].value', null) || 'AAA'}
+              {node.frontmatter.title || _.get(node, 'headings[0].value', null) || 'N/A'}
             </Link>
           </h3>
           <p>{node.frontmatter.description || node.excerpt}</p>
