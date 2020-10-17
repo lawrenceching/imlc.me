@@ -12,6 +12,7 @@ FROM node:latest as node
 WORKDIR /tmp
 COPY package*.json ./
 RUN npm install
+COPY . .
 RUN npm run build
 
 
@@ -20,5 +21,6 @@ FROM caddy:latest
 COPY --from=git /tmp/dist/.gitbook /srv/.gitbook
 COPY --from=git /tmp/dist/v/zh-cn/.gitbook /srv/v/zh-cn/.gitbook
 COPY --from=node /tmp/public /srv
+RUN ls -l /srv
 
 ENTRYPOINT [ "caddy", "file-server"]
