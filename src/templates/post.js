@@ -42,20 +42,12 @@ class Post extends React.Component {
 
   render() {
     const {data} = this.props;
-
-    console.log(data);
-
     const post = data.markdownRemark;
-
     const title = post.frontmatter.title || _.get(post, 'headings[0].value',
         null) || '';
-
     const headers = post.headings.filter(h => h.depth > 1);
 
-    console.log(headers);
-
     let menuId = 0;
-
     return (
         <div>
           <Helmet>

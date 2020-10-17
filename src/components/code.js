@@ -1,10 +1,11 @@
 import React from "react"
+import _ from 'lodash';
 import { CopyBlock, github } from "react-code-blocks";
 
 
 const Code = (props) => {
   const code = props.children[0];
-  const lang = props.className.replace('language-', '');
+  const lang = _.get(props, 'className', '').replace('language-', '');
   // props.languages = 'text';
   // props.showLineNumbers = true;
   return (
