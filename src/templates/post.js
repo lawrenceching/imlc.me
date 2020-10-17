@@ -67,7 +67,10 @@ class Post extends React.Component {
             <link rel="canonical" href="http://mysite.com/example"/>
           </Helmet>
           <Layout>
-            <Sider width={300} className="site-layout-background">
+            <Sider
+                breakpoint="lg"
+                collapsedWidth="0"
+                width={300} className="site-layout-background">
               <Menu
                   onClick={this.onMenuItemClick}
                   defaultSelectedKeys={['menu']}
