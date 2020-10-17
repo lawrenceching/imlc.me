@@ -42,13 +42,13 @@ module.exports = {
         }],
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `posts`,
-        path: `${__dirname}/src/posts`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `posts`,
+    //     path: `${__dirname}/src/posts`,
+    //   },
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -63,6 +63,24 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `gitbook-master`,
+        remote: `https://github.com/lawrenceching/gitbook`,
+        branch: `master`,
+        patterns: `*.md`
+      }
+    },
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `gitbook-zh-cn`,
+        remote: `https://github.com/lawrenceching/gitbook`,
+        branch: `zh-cn`,
+        patterns: `*.md`
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     //`gatsby-plugin-offline`,
