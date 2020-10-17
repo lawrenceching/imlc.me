@@ -5,6 +5,7 @@ module.exports = {
     title: "IMLC.ME",
     description: `IMLC.ME`,
     author: `IMLC.ME`,
+    beian: '粤ICP备15018861号'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

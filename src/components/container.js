@@ -13,12 +13,15 @@ const Container = ({ defKey, children }) => {
       site {
         siteMetadata {
           title
+          beian
         }
       }
     }
   `)
 
   let headerColor = "rebeccapurple"
+
+  const {title, beian} = data.site.siteMetadata;
   return (
     <Layout>
       <Header
@@ -32,7 +35,7 @@ const Container = ({ defKey, children }) => {
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <h1 style={{ margin: "margin 0", float: "left" }}>
             <Link to="/" style={{ color: "white" }}>
-              <CodeOutlined/> <span>{data.site.siteMetadata.title}</span>
+              <CodeOutlined/> <span>{title}</span>
             </Link>
           </h1>
           <Menu
@@ -62,7 +65,7 @@ const Container = ({ defKey, children }) => {
       </Content>
       <Footer style={{ textAlign: "center" }}>
         <p>Powered by <a target="_blank" href={"https://www.gatsbyjs.com/"}>Gatsby</a> and <a target="_blank" href={"gatsby-antd-starter"}>gatsby-antd-starter</a></p>
-        <p><a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备15018861号</a></p>
+        <p><a href="http://www.miitbeian.gov.cn" target="_blank">{beian}</a></p>
       </Footer>
     </Layout>
   )

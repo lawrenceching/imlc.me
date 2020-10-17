@@ -1,6 +1,6 @@
 import React from "react"
-import {graphql} from "gatsby"
-import {Typography, Menu, Layout, Image} from 'antd';
+import {graphql } from "gatsby"
+import {Typography, Menu, Layout, Image, Divider, BackTop } from 'antd';
 import { CodeOutlined, MenuOutlined } from '@ant-design/icons';
 import {Helmet} from "react-helmet"
 import rehypeReact from "rehype-react"
@@ -56,6 +56,9 @@ class Post extends React.Component {
     const headers = post.headings.filter(h => h.depth > 1);
 
     let menuId = 0;
+
+    const beian = data.site.siteMetadata.beian;
+
     return (
         <div>
           <Helmet>
@@ -93,7 +96,11 @@ class Post extends React.Component {
                   renderAst(post.htmlAst)
                 }
               </Content>
-              <Footer>Footer</Footer>
+              <Footer>
+                <Divider/>
+                <a href="http://www.miitbeian.gov.cn" target="_blank">{beian}</a>
+                <BackTop />
+              </Footer>
             </Layout>
           </Layout>
 
@@ -163,6 +170,8 @@ export default Post;
 //   )
 // }
 
+
+
 export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -176,5 +185,10 @@ export const query = graphql`
         depth
       }
     }
+    site {
+        siteMetadata {
+          beian
+        }
+      }
   }
 `
