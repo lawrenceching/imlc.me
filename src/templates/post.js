@@ -58,6 +58,7 @@ class Post extends React.Component {
     let menuId = 0;
 
     const beian = data.site.siteMetadata.beian;
+    const lastModifiedTime = post.parent.modifiedTime;
 
     return (
         <div>
@@ -101,7 +102,7 @@ class Post extends React.Component {
               </Content>
               <Footer>
                 <Divider/>
-                <p>Updated at ${'1994-123'}</p>
+                <p>Last modified at {lastModifiedTime}</p>
                 <a href="http://www.miitbeian.gov.cn" target="_blank">{beian}</a>
                 <BackTop />
               </Footer>
@@ -129,6 +130,13 @@ export const query = graphql`
         value
         depth
       }
+      parent {
+      ... on File {
+        id
+        name
+        modifiedTime(fromNow: true)
+      }
+    }
     }
     site {
         siteMetadata {
