@@ -9,7 +9,7 @@ import 'antd/dist/antd.css';
 
 const IndexPage = ({data}) => {
   return <Container>
-    <SEO title="Home" />
+    <SEO title="HOME" />
 
     {data.allMarkdownRemark.nodes.map(( node ) => (
         <div key={node.id}>

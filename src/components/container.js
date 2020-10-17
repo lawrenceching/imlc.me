@@ -3,7 +3,9 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import { Layout, Menu } from "antd"
+import { CodeOutlined } from '@ant-design/icons';
 const { Header, Footer, Content } = Layout
+
 
 const Container = ({ defKey, children }) => {
   const data = useStaticQuery(graphql`
@@ -30,7 +32,7 @@ const Container = ({ defKey, children }) => {
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <h1 style={{ margin: "margin 0", float: "left" }}>
             <Link to="/" style={{ color: "white" }}>
-              {data.site.siteMetadata.title}
+              <CodeOutlined/> <span>{data.site.siteMetadata.title}</span>
             </Link>
           </h1>
           <Menu
