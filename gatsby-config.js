@@ -30,7 +30,17 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [{
+          resolve: `gatsby-remark-static-asset-path-resolver`,
+          options: {
+            basePath: '/'
+          }
+        }],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
