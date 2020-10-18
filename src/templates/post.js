@@ -1,10 +1,11 @@
 import React from "react"
 import {graphql } from "gatsby"
-import {Typography, Menu, Layout, Image, Divider, BackTop } from 'antd';
+import {Typography, Menu, Layout, Image, Divider, BackTop, Affix } from 'antd';
 import { CodeOutlined, MenuOutlined } from '@ant-design/icons';
 import {Helmet} from "react-helmet"
 import rehypeReact from "rehype-react"
 import Code from '../components/code'
+import Avatar  from "../components/image"
 
 import 'antd/dist/antd.css';
 import _ from "lodash";
@@ -67,6 +68,9 @@ class Post extends React.Component {
             <title>{title}{" | IMLC.ME"}</title>
             <link rel="canonical" href="http://mysite.com/example"/>
           </Helmet>
+          <Affix style={{ position: 'fixed', bottom: 10, left: 10, zIndex: 1 }}>
+            <Avatar />
+          </Affix>
           <Layout>
             <Sider
                 breakpoint="lg"

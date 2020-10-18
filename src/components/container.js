@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import { Layout, Menu, Divider } from "antd"
+import { Layout, Menu } from "antd"
 import { CodeOutlined } from '@ant-design/icons';
 const { Header, Footer, Content } = Layout
 
