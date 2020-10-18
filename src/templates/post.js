@@ -1,16 +1,18 @@
 import React from "react"
 import {graphql } from "gatsby"
-import {Typography, Menu, Layout, Image, Divider, BackTop, Affix } from 'antd';
+import {Typography, Menu, Layout, Image, Divider, BackTop, Affix, Anchor } from 'antd';
 import { CodeOutlined, MenuOutlined } from '@ant-design/icons';
 import {Helmet} from "react-helmet"
 import rehypeReact from "rehype-react"
 import Code from '../components/code'
 import Avatar  from "../components/image"
-
+import {Heading2, Heading3, Heading4,Heading5}  from "../components/heading"
 import 'antd/dist/antd.css';
 import _ from "lodash";
+const crypto = require('crypto');
 
 const {Title} = Typography;
+const { Link } = Anchor;
 
 const {SubMenu} = Menu;
 const {Footer, Sider, Content} = Layout;
@@ -26,6 +28,10 @@ const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
     h1: Title,
+    h2: Heading2,
+    h3: Heading3,
+    h4: Heading4,
+    h5: Heading5,
     code: Code,
     img: AntdImage
   },
@@ -75,7 +81,8 @@ class Post extends React.Component {
             <Sider
                 breakpoint="lg"
                 collapsedWidth="0"
-                width={300} className="site-layout-background">
+                width={300} className="site-layout-background"
+            >
               <Menu
                   onClick={this.onMenuItemClick}
                   defaultSelectedKeys={['menu']}
@@ -93,7 +100,8 @@ class Post extends React.Component {
                 <SubMenu
                     key="menu"
                     title={<span><MenuOutlined /><span>Menu</span></span>}>
-                  {headers.map( h => (<Menu.Item key={menuId++}>{h.value}</Menu.Item>))}
+                  {headers.map( h => (<Menu.Item key={menuId++}>
+                    <a href={'#' + crypto.createHash('sha1').update(h.value).digest('hex')}>{h.value}</a></Menu.Item>))}
                 </SubMenu>
               </Menu>
             </Sider>
