@@ -42,7 +42,8 @@ class Post extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedMenu: 'menu'
+      selectedMenu: 'menu',
+      isSiderBroken: false
     }
   }
 
@@ -53,6 +54,12 @@ class Post extends React.Component {
         selectedMenu: key
       })
     }
+  }
+
+  onBreakPoint = (broken) => {
+    this.setState({
+      isSiderBroken: broken
+    });
   }
 
   render() {
@@ -66,7 +73,7 @@ class Post extends React.Component {
 
     const beian = data.site.siteMetadata.beian;
     const lastModifiedTime = post.parent.modifiedTime;
-
+    const contentMarginLeft = this.state.isSiderBroken ? '0' : '300px';
     return (
         <div>
           <Helmet>
@@ -82,6 +89,13 @@ class Post extends React.Component {
                 breakpoint="lg"
                 collapsedWidth="0"
                 width={300} className="site-layout-background"
+                onBreakpoint={this.onBreakPoint}
+                style={{
+                  overflow: 'auto',
+                  height: '100vh',
+                  position: 'fixed',
+                  left: 0,
+                }}
             >
               <Menu
                   onClick={this.onMenuItemClick}
@@ -105,7 +119,7 @@ class Post extends React.Component {
                 </SubMenu>
               </Menu>
             </Sider>
-            <Layout style={{padding: '20px'}}>
+            <Layout style={{padding: '20px', marginLeft: contentMarginLeft}}>>
               {/*<Header></Header>*/}
               <Content>
                 {
