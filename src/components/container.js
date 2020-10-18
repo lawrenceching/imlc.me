@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import { Layout, Menu } from "antd"
+import { Layout, Menu, Divider } from "antd"
 import { CodeOutlined } from '@ant-design/icons';
 const { Header, Footer, Content } = Layout
 
@@ -19,22 +19,25 @@ const Container = ({ defKey, children }) => {
     }
   `)
 
-  let headerColor = "rebeccapurple"
+  let headerColor = "white"
 
   const {title, beian} = data.site.siteMetadata;
   return (
-    <Layout>
+    <Layout style={{backgroundColor: headerColor}}>
       <Header
         style={{
           position: "fixed",
           zIndex: 1,
           width: "100%",
           backgroundColor: headerColor,
+          borderBottomStyle: 'solid',
+          borderBottomColor: 'rgba(0, 0, 0, 0.06)',
+          borderBottomWidth: '1px'
         }}
       >
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <h1 style={{ margin: "margin 0", float: "left" }}>
-            <Link to="/" style={{ color: "white" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto"}}>
+          <h1>
+            <Link to="/" >
               <CodeOutlined/> <span>{title}</span>
             </Link>
           </h1>
