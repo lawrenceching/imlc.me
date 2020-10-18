@@ -82,6 +82,15 @@ module.exports = {
         patterns: `*.md`,
         overrideModifiedTime: true
       }
+    },
+    {
+      resolve: `gatsby-plugin-baidu-analytics`,
+      options: {
+        // baidu analytics siteId
+        siteId: "1c580cbd8b739e5370d4209408d10f4c",
+        // Put analytics script in the head instead of the body [default:false]
+        head: false,
+      },
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
