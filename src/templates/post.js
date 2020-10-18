@@ -6,6 +6,7 @@ import {Helmet} from "react-helmet"
 import rehypeReact from "rehype-react"
 import Code from '../components/code'
 import Avatar  from "../components/image"
+import Table  from "../components/table"
 import {Heading2, Heading3, Heading4,Heading5}  from "../components/heading"
 import 'antd/dist/antd.css';
 import _ from "lodash";
@@ -32,6 +33,7 @@ const renderAst = new rehypeReact({
     h3: Heading3,
     h4: Heading4,
     h5: Heading5,
+    table: Table,
     code: Code,
     img: AntdImage
   },
