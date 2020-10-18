@@ -4,14 +4,25 @@ import SEO from "../components/seo"
 import { Link, graphql } from "gatsby"
 import { Divider } from 'antd';
 import _ from 'lodash';
+import moment from 'moment';
 
 import 'antd/dist/antd.css';
 
 const IndexPage = ({data}) => {
+
+  data.allMarkdownRemark.nodes.sort((n1, n2) => {
+    return Date.parse(n2.parent.modifiedTime) - Date.parse(
+        n1.parent.modifiedTime)
+  });
+
   return <Container>
     <SEO title="HOME" />
 
-    {data.allMarkdownRemark.nodes.map(( node ) => (
+    {data.allMarkdownRemark.nodes
+        .filter(node => {
+          return _.get(node, 'headings[0].value') !== 'Table of contents'
+        })
+        .map(( node ) => (
         <div key={node.id}>
           <h3>
             <Link to={node.fields.slug}>
@@ -19,6 +30,7 @@ const IndexPage = ({data}) => {
             </Link>
           </h3>
           <p>{node.frontmatter.description || node.excerpt}</p>
+          <p>{moment(node.parent.modifiedTime).fromNow()}</p>
           <Divider/>
         </div>
     ))}
@@ -45,6 +57,11 @@ query MyQuery {
         slug
       }
       excerpt(format: PLAIN, pruneLength: 100)
+      parent {
+        ... on File {
+          modifiedTime(fromNow: false)
+        }
+      }
     }
   }
 }
