@@ -8,8 +8,8 @@ const hash = (text) => crypto.createHash('sha1').update(text).digest('hex');
 const heading = (level) => {
   return (props) => {
     let text = _.get(props, 'children[0]', 'N/A')
-    if(!(text instanceof String)) {
-      text = `Unsupported heading type: ${typeof text}`
+    if(typeof text !== 'string') {
+      text = _.get(text, 'props.children[0]', 'N/A')
     }
     return <Title id={hash(text)} level={level}>{text}</Title>
   }
@@ -17,7 +17,7 @@ const heading = (level) => {
 
 const headings = {};
 
-for (const i in [1, 2, 3, 4, 5]) {
+for (const i of [1, 2, 3, 4, 5]) {
   headings['Heading' + i] = heading(i)
 }
 

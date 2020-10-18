@@ -119,7 +119,7 @@ class Post extends React.Component {
                 </SubMenu>
               </Menu>
             </Sider>
-            <Layout style={{padding: '20px', marginLeft: contentMarginLeft}}>>
+            <Layout style={{padding: '20px', marginLeft: contentMarginLeft}}>
               {/*<Header></Header>*/}
               <Content>
                 {
