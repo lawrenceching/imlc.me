@@ -76,6 +76,14 @@ class Post extends React.Component {
     const beian = data.site.siteMetadata.beian;
     const lastModifiedTime = post.parent.modifiedTime;
     const contentMarginLeft = this.state.isSiderBroken ? '0' : '300px';
+
+    const siderStyle = this.state.isSiderBroken ? {} : {
+      overflow: 'auto',
+      height: '100vh',
+      position: 'fixed',
+      left: 0,
+    };
+
     return (
         <div>
           <Helmet>
@@ -92,12 +100,7 @@ class Post extends React.Component {
                 collapsedWidth="0"
                 width={300} className="site-layout-background"
                 onBreakpoint={this.onBreakPoint}
-                style={{
-                  overflow: 'auto',
-                  height: '100vh',
-                  position: 'fixed',
-                  left: 0,
-                }}
+                style={siderStyle}
             >
               <Menu
                   onClick={this.onMenuItemClick}
