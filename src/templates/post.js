@@ -1,7 +1,7 @@
 import React from "react"
 import {graphql } from "gatsby"
-import {Typography, Menu, Layout, Image, Divider, BackTop, Affix, Anchor } from 'antd';
-import { CodeOutlined, MenuOutlined } from '@ant-design/icons';
+import {Typography, Menu, Layout, Image, Divider, BackTop, Affix, Anchor, Row, Col } from 'antd';
+import { CodeOutlined, MenuOutlined, GithubOutlined } from '@ant-design/icons';
 import {Helmet} from "react-helmet"
 import rehypeReact from "rehype-react"
 import Code from '../components/code'
@@ -67,6 +67,14 @@ class Post extends React.Component {
   render() {
     const {data} = this.props;
     const post = data.markdownRemark;
+
+    const relativePath = post.parent.relativePath;
+    const { name, ref, source, sourceInstanceName, webLink } = post.parent.gitRemote;
+    // https://github.com/lawrenceching/gitbook/blob/master/create-cronjob-in-kubernetes.md
+    const githubUrl = `${webLink}/blob/${ref}/${relativePath}`
+
+    console.log(post);
+
     const title = post.frontmatter.title || _.get(post, 'headings[0].value',
         null) || '';
     const headers = post.headings.filter(h => h.depth > 1);
@@ -112,7 +120,7 @@ class Post extends React.Component {
                   style={{height: '100%', borderRight: 0}}
               >
                 <Menu.Item key="home">
-                  <a href="/" target="_blank" rel="noopener noreferrer">
+                  <a href="/" rel="noopener noreferrer">
                     <span><CodeOutlined /><span>IMLC.ME</span></span>
                   </a>
                 </Menu.Item>
@@ -133,8 +141,25 @@ class Post extends React.Component {
               </Content>
               <Footer>
                 <Divider/>
-                <p>Last modified at {lastModifiedTime}</p>
-                <a href="http://www.miitbeian.gov.cn" target="_blank">{beian}</a>
+                <Row>
+                  <Col xs={{ span: 24 }}
+                       sm={{ span: 24 }}
+                       md={{ span: 12 }}
+                       lg={{ span: 12 }}
+                       xl={{ span: 12 }}
+                       xll={{ span: 12 }}>
+                    <a href={githubUrl}><GithubOutlined style={{ fontSize: '35px', color: '#08c' }}/></a>
+                  </Col>
+                  <Col xs={{ span: 24 , push: 0}}
+                       sm={{ span: 12, push: 8}}
+                       md={{ span: 12, push: 8}}
+                       lg={{ span: 12, push: 8}}
+                       xl={{ span: 12, push: 8}}
+                       xll={{ span: 12, push: 8}}>
+                    <div>Last modified at {lastModifiedTime}</div>
+                    <a href="http://www.miitbeian.gov.cn" target="_blank">{beian}</a>
+                  </Col>
+                </Row>
                 <BackTop />
               </Footer>
             </Layout>
@@ -165,7 +190,15 @@ export const query = graphql`
       ... on File {
         id
         name
+        relativePath
         modifiedTime(fromNow: true)
+        gitRemote {
+          sourceInstanceName
+          ref
+          webLink
+          source
+          name
+        }
       }
     }
     }
