@@ -6,7 +6,7 @@ module.exports = {
     description: `IMLC.ME`,
     author: `IMLC.ME`,
     beian: '粤ICP备15018861号',
-    siteUrl: `https://www.imlc.com`,
+    siteUrl: `https://www.imlc.me`,
   },
   plugins: [
     `gatsby-plugin-sitemap`,
