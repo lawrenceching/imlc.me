@@ -76,6 +76,7 @@ class Post extends React.Component {
     const title = post.frontmatter.title || _.get(post, 'headings[0].value',
         null) || '';
     const headers = post.headings.filter(h => h.depth > 1);
+    const description = post.frontmatter.description || post.excerpt || '';
 
     let menuId = 0;
 
@@ -95,6 +96,7 @@ class Post extends React.Component {
           <Helmet>
             <meta charSet="utf-8"/>
             <title>{title}{" | IMLC.ME"}</title>
+            <description>{description}</description>
             <link rel="canonical" href="http://mysite.com/example"/>
           </Helmet>
           <Affix style={{ position: 'fixed', bottom: 10, left: 10, zIndex: 1 }}>
@@ -162,8 +164,6 @@ class Post extends React.Component {
               </Footer>
             </Layout>
           </Layout>
-
-
         </div>
     )
 
@@ -179,7 +179,9 @@ export const query = graphql`
       htmlAst
       frontmatter {
         title
+        description
       }
+      excerpt(format: PLAIN, pruneLength: 100)
       headings {
         value
         depth
