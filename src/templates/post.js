@@ -96,7 +96,8 @@ class Post extends React.Component {
           <Helmet>
             <meta charSet="utf-8"/>
             <title>{title}{" | IMLC.ME"}</title>
-            <description>{description}</description>
+            <meta description="{description}"/>
+            <meta keywords="Java, JavaScript, Backend, Software Engineer"/>
             <link rel="canonical" href="http://mysite.com/example"/>
           </Helmet>
           <Affix style={{ position: 'fixed', bottom: 10, left: 10, zIndex: 1 }}>
