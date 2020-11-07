@@ -68,19 +68,9 @@ module.exports = {
     {
       resolve: `gatsby-source-git-dev`,
       options: {
-        name: `gitbook-master`,
-        remote: `https://github.com/lawrenceching/gitbook`,
+        name: `gitee`,
+        remote: `https://gitee.com/lawrenceching/blog.git`,
         branch: `master`,
-        patterns: `*.md`,
-        overrideModifiedTime: true
-      }
-    },
-    {
-      resolve: `gatsby-source-git-dev`,
-      options: {
-        name: `gitbook-zh-cn`,
-        remote: `https://github.com/lawrenceching/gitbook`,
-        branch: `zh-cn`,
         patterns: `*.md`,
         overrideModifiedTime: true
       }

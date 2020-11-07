@@ -45,9 +45,10 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve -H 0.0.0.0",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "entrypoint": "npm run build && cp -r .cache/gatsby-source-git/gitee/.gitbook ./public/ && npm run serve"
   },
   "repository": {
     "type": "git",

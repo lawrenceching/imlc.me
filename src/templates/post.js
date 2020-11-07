@@ -73,8 +73,6 @@ class Post extends React.Component {
     // https://github.com/lawrenceching/gitbook/blob/master/create-cronjob-in-kubernetes.md
     const githubUrl = `${webLink}/blob/${ref}/${relativePath}`
 
-    console.log(post);
-
     const title = post.frontmatter.title || _.get(post, 'headings[0].value',
         null) || '';
     const headers = post.headings.filter(h => h.depth > 1);
