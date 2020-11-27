@@ -29,7 +29,7 @@
     "fs-extra": "^5.0.0",
     "gatsby-source-filesystem": "^2.1.19",
     "git-url-parse": "^11.1.1",
-    "rimraf": "^2.6.2",
+    "rimraf": "^2.7.1",
     "simple-git": "^1.105.0"
   }
 }
