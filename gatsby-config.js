@@ -41,7 +41,13 @@ module.exports = {
           options: {
             basePath: '/'
           }
-        }],
+        },
+          {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              terminal: 'ubuntu'
+            }
+          }],
       },
     },
     // {
