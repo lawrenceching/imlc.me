@@ -2,6 +2,8 @@ const visit = require("unist-util-visit")
 const toString = require("mdast-util-to-string")
 
 module.exports = async ({ markdownAST }, pluginOptions) => {
+
+  console.log('markdownAST: ', markdownAST);
   const {basePath} = pluginOptions;
   // Manipulate AST
 

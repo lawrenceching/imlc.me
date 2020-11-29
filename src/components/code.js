@@ -3,7 +3,8 @@ import _ from 'lodash';
 import {CopyBlock, CodeBlock, github} from "react-code-blocks";
 
 const Code = (props) => {
-  const code = props.children[0];
+  console.log(props);
+  const code = props.children[0].props.children[0];
   let lang = _.get(props, 'className', '').replace('language-', '');
 
   // bash / shell is not supported due to below issue.
