@@ -40,7 +40,7 @@ const renderAst = new rehypeReact({
     h5: Heading5,
     table: Table,
     img: AntdImage,
-    code: InlineCode,
+    // code: InlineCode,
   },
 }).Compiler
 
