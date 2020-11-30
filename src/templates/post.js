@@ -7,6 +7,7 @@ import rehypeReact from "rehype-react"
 import Code from '../components/code'
 import Avatar  from "../components/image"
 import Table  from "../components/table"
+import InlineCode from '../components/InlineCode'
 import {Heading2, Heading3, Heading4,Heading5}  from "../components/heading"
 import 'antd/dist/antd.css';
 import _ from "lodash";
@@ -38,7 +39,8 @@ const renderAst = new rehypeReact({
     h4: Heading4,
     h5: Heading5,
     table: Table,
-    img: AntdImage
+    img: AntdImage,
+    code: InlineCode,
   },
 }).Compiler
 
@@ -92,6 +94,9 @@ class Post extends React.Component {
       height: '100vh',
       position: 'fixed',
       left: 0,
+      borderRightWidth: '1px',
+      borderRightColor: 'rgb(240, 240, 240)',
+      borderRightStyle: 'solid',
     };
 
     return (
@@ -136,14 +141,14 @@ class Post extends React.Component {
                 </SubMenu>
               </Menu>
             </Sider>
-            <Layout style={{padding: '20px', marginLeft: contentMarginLeft}}>
+            <Layout style={{padding: '20px', marginLeft: contentMarginLeft, backgroundColor: 'white'}}>
               {/*<Header></Header>*/}
               <Content>
                 {
                   renderAst(post.htmlAst)
                 }
               </Content>
-              <Footer>
+              <Footer style={{backgroundColor: 'white'}}>
                 <Divider/>
                 <Row>
                   <Col xs={{ span: 24 }}
