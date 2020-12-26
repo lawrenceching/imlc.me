@@ -13,7 +13,7 @@ import Avatar from '../images/avatar.jpg'
  */
 
 const Image = () => {
-  return <img width="50px" src={Avatar}/>
+  return <img alt="" width="50px" src={Avatar}/>
 }
 
 export default Image

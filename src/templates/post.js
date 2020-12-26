@@ -4,10 +4,8 @@ import {Typography, Menu, Layout, Image, Divider, BackTop, Affix, Anchor, Row, C
 import { CodeOutlined, MenuOutlined, GithubOutlined } from '@ant-design/icons';
 import {Helmet} from "react-helmet"
 import rehypeReact from "rehype-react"
-import Code from '../components/code'
 import Avatar  from "../components/image"
 import Table  from "../components/table"
-import InlineCode from '../components/InlineCode'
 import {Heading2, Heading3, Heading4,Heading5}  from "../components/heading"
 import 'antd/dist/antd.css';
 import _ from "lodash";
@@ -18,7 +16,6 @@ deckDeckGoHighlightElement();
 const crypto = require('crypto');
 
 const {Title} = Typography;
-const { Link } = Anchor;
 
 const {SubMenu} = Menu;
 const {Footer, Sider, Content} = Layout;
@@ -129,7 +126,7 @@ class Post extends React.Component {
                   style={{height: '100%', borderRight: 0}}
               >
                 <Menu.Item key="home">
-                  <a href="/" rel="noopener noreferrer">
+                  <a rel="noreferrer" href="/" rel="noopener noreferrer">
                     <span><CodeOutlined /><span>IMLC.ME</span></span>
                   </a>
                 </Menu.Item>
@@ -137,7 +134,7 @@ class Post extends React.Component {
                     key="menu"
                     title={<span><MenuOutlined /><span>Menu</span></span>}>
                   {headers.map( h => (<Menu.Item key={menuId++}>
-                    <a href={'#' + crypto.createHash('sha1').update(h.value).digest('hex')}>{h.value}</a></Menu.Item>))}
+                    <a rel="noreferrer" href={'#' + crypto.createHash('sha1').update(h.value).digest('hex')}>{h.value}</a></Menu.Item>))}
                 </SubMenu>
               </Menu>
             </Sider>
