@@ -9,9 +9,6 @@ import Table  from "../components/table"
 import {Heading2, Heading3, Heading4,Heading5}  from "../components/heading"
 import 'antd/dist/antd.css';
 import _ from "lodash";
-import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
-
-deckDeckGoHighlightElement();
 
 const crypto = require('crypto');
 

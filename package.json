@@ -27,6 +27,7 @@
     "less": "^3.12.2",
     "less-to-json": "^1.2.0",
     "lodash": "^4.17.20",
+    "prism-themes": "^1.5.0",
     "prismjs": "^1.22.0",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
