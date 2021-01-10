@@ -1,6 +1,6 @@
 import React from "react"
 import {graphql } from "gatsby"
-import {Typography, Menu, Layout, Image, Divider, BackTop, Affix, Anchor, Row, Col } from 'antd';
+import {Typography, Menu, Layout, Image, Divider, BackTop, Affix, Row, Col } from 'antd';
 import { CodeOutlined, MenuOutlined, GithubOutlined } from '@ant-design/icons';
 import {Helmet} from "react-helmet"
 import rehypeReact from "rehype-react"
@@ -34,7 +34,6 @@ const renderAst = new rehypeReact({
     h5: Heading5,
     table: Table,
     img: AntdImage,
-    // code: InlineCode,
   },
 }).Compiler
 
@@ -68,7 +67,7 @@ class Post extends React.Component {
     const post = data.markdownRemark;
 
     const relativePath = post.parent.relativePath;
-    const { name, ref, source, sourceInstanceName, webLink } = post.parent.gitRemote;
+    const { ref, webLink } = post.parent.gitRemote;
     // https://github.com/lawrenceching/gitbook/blob/master/create-cronjob-in-kubernetes.md
     const githubUrl = `${webLink}/blob/${ref}/${relativePath}`
 
@@ -123,7 +122,7 @@ class Post extends React.Component {
                   style={{height: '100%', borderRight: 0}}
               >
                 <Menu.Item key="home">
-                  <a rel="noreferrer" href="/" rel="noopener noreferrer">
+                  <a href="/" rel="noopener noreferrer">
                     <span><CodeOutlined /><span>IMLC.ME</span></span>
                   </a>
                 </Menu.Item>
@@ -151,7 +150,7 @@ class Post extends React.Component {
                        lg={{ span: 12 }}
                        xl={{ span: 12 }}
                        xll={{ span: 12 }}>
-                    <a href={githubUrl}><GithubOutlined style={{ fontSize: '35px', color: '#08c' }}/></a>
+                    <a rel="noreferrer" href={githubUrl}><GithubOutlined style={{ fontSize: '35px', color: '#08c' }}/></a>
                   </Col>
                   <Col xs={{ span: 24 , push: 0}}
                        sm={{ span: 12, push: 8}}
@@ -160,7 +159,7 @@ class Post extends React.Component {
                        xl={{ span: 12, push: 8}}
                        xll={{ span: 12, push: 8}}>
                     <div>Last modified at {lastModifiedTime}</div>
-                    <a href="http://www.miitbeian.gov.cn" target="_blank">{beian}</a>
+                    <a href="http://www.miitbeian.gov.cn" rel="noreferrer" target="_blank">{beian}</a>
                   </Col>
                 </Row>
                 <BackTop />
