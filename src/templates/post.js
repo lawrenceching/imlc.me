@@ -158,8 +158,8 @@ class Post extends React.Component {
                        lg={{ span: 12, push: 8}}
                        xl={{ span: 12, push: 8}}
                        xll={{ span: 12, push: 8}}>
-                    <div>Last modified at {lastModifiedTime}</div>
-                    <a href="http://www.miitbeian.gov.cn" rel="noreferrer" target="_blank">{beian}</a>
+                    <div>最后更新于 {lastModifiedTime}</div>
+                    <a href="https://beian.miit.gov.cn" rel="noreferrer" target="_blank">{beian}</a>
                   </Col>
                 </Row>
                 <BackTop />

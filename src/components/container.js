@@ -68,7 +68,7 @@ const Container = ({ defKey, children }) => {
       </Content>
       <Footer style={{ textAlign: "center" }}>
         <p>Powered by <a target="_blank" rel="noreferrer" href={"https://www.gatsbyjs.com/"}>Gatsby</a> and <a target="_blank" rel="noreferrer" href={"gatsby-antd-starter"}>gatsby-antd-starter</a></p>
-        <p><a href="http://www.miitbeian.gov.cn" rel="noreferrer" target="_blank">{beian}</a></p>
+        <p><a href="https://beian.miit.gov.cn" rel="noreferrer" target="_blank">{beian}</a></p>
       </Footer>
     </Layout>
   )
