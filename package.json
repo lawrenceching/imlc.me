@@ -24,7 +24,7 @@
     "gatsby-remark-prismjs": "^3.10.0",
     "gatsby-source-filesystem": "^2.3.37",
     "gatsby-source-git": "^1.1.0",
-    "gatsby-transformer-remark": "^2.13.1",
+    "gatsby-transformer-remark": "^4.0.0",
     "gatsby-transformer-sharp": "^2.5.20",
     "less": "^3.12.2",
     "less-to-json": "^1.2.0",
