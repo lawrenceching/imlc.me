@@ -8,7 +8,7 @@ RUN yarn
 COPY . .
 RUN yarn build
 
-FROM nginx:stable
+FROM nginx:1.21
 
 EXPOSE 80
 
