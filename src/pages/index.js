@@ -5,8 +5,16 @@ import { Link, graphql } from "gatsby"
 import { Divider } from 'antd';
 import _ from 'lodash';
 import moment from 'moment';
+import {Helmet} from "react-helmet"
+import { createGlobalStyle } from "styled-components"
 
 import 'antd/dist/antd.css';
+
+const GlobalStyle = createGlobalStyle`
+  div#___gatsby {
+    overflow-x: hidden;
+  }
+`
 
 const IndexPage = ({data}) => {
 
@@ -16,7 +24,13 @@ const IndexPage = ({data}) => {
   });
 
   return <Container>
+    <Helmet>
+      <body className="app" />
+    </Helmet>
     <SEO title="HOME" />
+    <React.Fragment>
+      <GlobalStyle />
+    </React.Fragment>
 
     {data.allMarkdownRemark.nodes
         .filter(node => {

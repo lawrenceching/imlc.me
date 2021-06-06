@@ -1,19 +1,18 @@
 import React from "react"
 import {graphql } from "gatsby"
-import {Typography, Menu, Layout, Image, Divider, BackTop, Affix, Anchor, Row, Col } from 'antd';
+import {Typography, Menu, Layout, Image, Divider, BackTop, Affix, Row, Col } from 'antd';
 import { CodeOutlined, MenuOutlined, GithubOutlined } from '@ant-design/icons';
 import {Helmet} from "react-helmet"
 import rehypeReact from "rehype-react"
-import Code from '../components/code'
 import Avatar  from "../components/image"
 import Table  from "../components/table"
 import {Heading2, Heading3, Heading4,Heading5}  from "../components/heading"
 import 'antd/dist/antd.css';
 import _ from "lodash";
+
 const crypto = require('crypto');
 
 const {Title} = Typography;
-const { Link } = Anchor;
 
 const {SubMenu} = Menu;
 const {Footer, Sider, Content} = Layout;
@@ -34,8 +33,7 @@ const renderAst = new rehypeReact({
     h4: Heading4,
     h5: Heading5,
     table: Table,
-    code: Code,
-    img: AntdImage
+    img: AntdImage,
   },
 }).Compiler
 
@@ -69,7 +67,7 @@ class Post extends React.Component {
     const post = data.markdownRemark;
 
     const relativePath = post.parent.relativePath;
-    const { name, ref, source, sourceInstanceName, webLink } = post.parent.gitRemote;
+    const { ref, webLink } = post.parent.gitRemote;
     // https://github.com/lawrenceching/gitbook/blob/master/create-cronjob-in-kubernetes.md
     const githubUrl = `${webLink}/blob/${ref}/${relativePath}`
 
@@ -89,6 +87,9 @@ class Post extends React.Component {
       height: '100vh',
       position: 'fixed',
       left: 0,
+      borderRightWidth: '1px',
+      borderRightColor: 'rgb(240, 240, 240)',
+      borderRightStyle: 'solid',
     };
 
     return (
@@ -129,18 +130,18 @@ class Post extends React.Component {
                     key="menu"
                     title={<span><MenuOutlined /><span>Menu</span></span>}>
                   {headers.map( h => (<Menu.Item key={menuId++}>
-                    <a href={'#' + crypto.createHash('sha1').update(h.value).digest('hex')}>{h.value}</a></Menu.Item>))}
+                    <a rel="noreferrer" href={'#' + crypto.createHash('sha1').update(h.value).digest('hex')}>{h.value}</a></Menu.Item>))}
                 </SubMenu>
               </Menu>
             </Sider>
-            <Layout style={{padding: '20px', marginLeft: contentMarginLeft}}>
+            <Layout style={{padding: '20px', marginLeft: contentMarginLeft, backgroundColor: 'white'}}>
               {/*<Header></Header>*/}
               <Content>
                 {
                   renderAst(post.htmlAst)
                 }
               </Content>
-              <Footer>
+              <Footer style={{backgroundColor: 'white'}}>
                 <Divider/>
                 <Row>
                   <Col xs={{ span: 24 }}
@@ -149,7 +150,7 @@ class Post extends React.Component {
                        lg={{ span: 12 }}
                        xl={{ span: 12 }}
                        xll={{ span: 12 }}>
-                    <a href={githubUrl}><GithubOutlined style={{ fontSize: '35px', color: '#08c' }}/></a>
+                    <a rel="noreferrer" href={githubUrl}><GithubOutlined style={{ fontSize: '35px', color: '#08c' }}/></a>
                   </Col>
                   <Col xs={{ span: 24 , push: 0}}
                        sm={{ span: 12, push: 8}}
@@ -157,8 +158,8 @@ class Post extends React.Component {
                        lg={{ span: 12, push: 8}}
                        xl={{ span: 12, push: 8}}
                        xll={{ span: 12, push: 8}}>
-                    <div>Last modified at {lastModifiedTime}</div>
-                    <a href="http://www.miitbeian.gov.cn" target="_blank">{beian}</a>
+                    <div>最后更新于 {lastModifiedTime}</div>
+                    <a href="https://beian.miit.gov.cn" rel="noreferrer" target="_blank">{beian}</a>
                   </Col>
                 </Row>
                 <BackTop />

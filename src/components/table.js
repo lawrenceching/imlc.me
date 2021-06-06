@@ -1,5 +1,5 @@
 import React from "react"
-import { Table } from 'antd';
+import {Table} from 'antd';
 
 const AntdTable = (props) => {
 
@@ -10,7 +10,7 @@ const AntdTable = (props) => {
   const headers = th.map(th => th.props.children[0]);
 
   const columns = [];
-  for (let i = 0; i < headers.length;  i++) {
+  for (let i = 0; i < headers.length; i++) {
     columns.push({
       title: headers[i],
       dataIndex: headers[i],
@@ -21,7 +21,15 @@ const AntdTable = (props) => {
   const trs = props.children[1] // tbody
       .props.children  // tr;
 
-  const tds = trs.map(tr => tr.props.children.map(td => td.props.children[0]));
+  const tds = trs.map(tr => tr.props.children.map(td => {
+    const children = td.props.children
+    if (children === null || children === undefined) {
+      return null;
+    } else {
+      return td.props.children[0];
+    }
+  }))
+  .filter(td => td !== null);
 
   const dataSource = [];
   for (let i = 0; i < tds.length; i++) {
@@ -33,7 +41,8 @@ const AntdTable = (props) => {
     dataSource.push(obj)
   }
 
-  return <Table style={{marginTop: '10px', marginBottom: '10px'}} size="small" dataSource={dataSource} columns={columns} pagination={false} />;
+  return <Table style={{marginTop: '10px', marginBottom: '10px'}} size="small"
+                dataSource={dataSource} columns={columns} pagination={false}/>;
 }
 
 export default AntdTable;

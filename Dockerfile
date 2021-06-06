@@ -1,7 +1,19 @@
-FROM node:latest
-WORKDIR /var/app
+FROM node:latest as builder
+WORKDIR /app
+
 COPY package*.json ./
-RUN npm install
+COPY yarn.lock ./
+RUN yarn config set registry https://registry.npm.taobao.org
+RUN yarn
 COPY . .
-EXPOSE 9000
-CMD [ "/usr/local/bin/npm", "run", "entrypoint" ]
+RUN yarn build
+
+FROM nginx:1.21
+
+EXPOSE 80
+
+COPY --from=builder /app/public /var/www
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+
+CMD ["nginx"]
