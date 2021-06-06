@@ -6,7 +6,8 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "antd": "^4.7.3",
-    "gatsby": "^2.24.91",
+    "babel-plugin-styled-components": "^1.12.0",
+    "gatsby": "^2.32.8",
     "gatsby-image": "^2.4.21",
     "gatsby-plugin-antd": "^2.2.0",
     "gatsby-plugin-baidu-analytics": "^2.2.0",
@@ -17,13 +18,19 @@
     "gatsby-plugin-react-helmet": "^3.3.14",
     "gatsby-plugin-sharp": "^2.6.43",
     "gatsby-plugin-sitemap": "^2.4.17",
+    "gatsby-plugin-styled-components": "^3.7.0",
+    "gatsby-remark-copy-linked-files": "^2.8.0",
+    "gatsby-remark-images": "^3.9.0",
+    "gatsby-remark-prismjs": "^3.10.0",
     "gatsby-source-filesystem": "^2.3.37",
     "gatsby-source-git": "^1.1.0",
-    "gatsby-transformer-remark": "^2.8.47",
+    "gatsby-transformer-remark": "^4.0.0",
     "gatsby-transformer-sharp": "^2.5.20",
     "less": "^3.12.2",
     "less-to-json": "^1.2.0",
     "lodash": "^4.17.20",
+    "prism-themes": "^1.5.0",
+    "prismjs": "^1.22.0",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-code-blocks": "0.0.8",
@@ -31,7 +38,8 @@
     "react-helmet": "^6.1.0",
     "react-syntax-highlighter": "^15.3.0",
     "react-typography": "^0.16.19",
-    "rehype-react": "^6.1.0"
+    "rehype-react": "^6.1.0",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "prettier": "^2.0.5"
@@ -48,7 +56,7 @@
     "serve": "gatsby serve -H 0.0.0.0",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "entrypoint": "npm run build && cp -r .cache/gatsby-source-git/gitee/.gitbook ./public/ && npm run serve"
+    "entrypoint": "npm run build && npm run serve"
   },
   "repository": {
     "type": "git",

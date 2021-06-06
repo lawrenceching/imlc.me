@@ -67,8 +67,8 @@ const Container = ({ defKey, children }) => {
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>{children}</div>
       </Content>
       <Footer style={{ textAlign: "center" }}>
-        <p>Powered by <a target="_blank" href={"https://www.gatsbyjs.com/"}>Gatsby</a> and <a target="_blank" href={"gatsby-antd-starter"}>gatsby-antd-starter</a></p>
-        <p><a href="http://www.miitbeian.gov.cn" target="_blank">{beian}</a></p>
+        <p>Powered by <a target="_blank" rel="noreferrer" href={"https://www.gatsbyjs.com/"}>Gatsby</a> and <a target="_blank" rel="noreferrer" href={"gatsby-antd-starter"}>gatsby-antd-starter</a></p>
+        <p><a href="https://beian.miit.gov.cn" rel="noreferrer" target="_blank">{beian}</a></p>
       </Footer>
     </Layout>
   )
